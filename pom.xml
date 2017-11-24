@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.debezium</groupId>
     <artifactId>debezium-parent</artifactId>
-    <version>0.6.2-FLIXTECH-1-SNAPSHOT</version>
+    <version>0.6.2-FLIXTECH-1</version>
     <name>Debezium Parent POM</name>
     <description>Debezium is an open source change data capture platform</description>
     <packaging>pom</packaging>
@@ -19,7 +19,7 @@
         <connection>scm:git:git@github.com:flix-tech/debezium.git</connection>
         <developerConnection>scm:git:git@github.com:flix-tech/debezium.git</developerConnection>
         <url>https://github.com/flix-tech/debezium.git</url>
-        <tag>0.6.2-FLIXTECH</tag>
+        <tag>debezium-parent-0.6.2-FLIXTECH-1</tag>
     </scm>
     <issueManagement>
         <system>jira</system>
