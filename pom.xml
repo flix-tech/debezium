@@ -10,16 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.debezium</groupId>
     <artifactId>debezium-parent</artifactId>
-    <version>0.6.2</version>
+    <version>0.6.2-FLIXTECH-1-SNAPSHOT</version>
     <name>Debezium Parent POM</name>
     <description>Debezium is an open source change data capture platform</description>
     <packaging>pom</packaging>
     <url>http://debezium.io</url>
     <scm>
-        <connection>scm:git:git@github.com:debezium/debezium.git</connection>
-        <developerConnection>scm:git:git@github.com:debezium/debezium.git</developerConnection>
-        <url>https://github.com/debezium/debezium</url>
-      <tag>v0.6.2</tag>
+        <connection>scm:git:git@github.com:flix-tech/debezium.git</connection>
+        <developerConnection>scm:git:git@github.com:flix-tech/debezium.git</developerConnection>
+        <url>https://github.com/flix-tech/debezium.git</url>
+        <tag>0.6.2-FLIXTECH</tag>
     </scm>
     <issueManagement>
         <system>jira</system>
@@ -125,6 +125,7 @@
     </modules>
 
     <distributionManagement>
+      <!--
       <repository>
         <id>ossrh</id>
         <name>Sonatype Staging Repository</name>
@@ -134,6 +135,17 @@
         <id>ossrh</id>
         <name>OSS Sonatype Nexus Snapshots</name>
         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      </snapshotRepository>
+-->
+      <repository>
+        <id>central</id>
+        <name>libs-release</name>
+        <url>https://flixbus.jfrog.io/flixbus/libs-release-local/</url>
+      </repository>
+      <snapshotRepository>
+        <id>snapshots</id>
+        <name>libs-snapshot</name>
+        <url>https://flixbus.jfrog.io/flixbus/libs-snapshot-local/</url>
       </snapshotRepository>
     </distributionManagement>
 
