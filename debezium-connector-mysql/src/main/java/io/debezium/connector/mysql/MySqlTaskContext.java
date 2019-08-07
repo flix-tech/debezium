@@ -243,6 +243,10 @@ public final class MySqlTaskContext extends CdcSourceTaskContext {
         return SnapshotMode.parse(value, MySqlConnectorConfig.SNAPSHOT_MODE.defaultValueAsString());
     }
 
+    protected boolean isCdcEnabled() {
+        return config.getBoolean(MySqlConnectorConfig.CDC_ENABLED);
+    }
+
     public String getSnapshotSelectOverrides() {
         return config.getString(MySqlConnectorConfig.SNAPSHOT_SELECT_STATEMENT_OVERRIDES_BY_TABLE);
     }

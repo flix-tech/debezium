@@ -2,6 +2,11 @@
 
 All notable changes are documented in this file. Release numbers follow [Semantic Versioning](http://semver.org)
 
+## 0.8.3.Flix1
+Added configuration `cdc.enabled`.
+It defaults to true. 
+Debezium will not start the CDC phase if this setting is changed to false. 
+
 ## 0.8.3.Final
 September 19th, 2018 [Detailed release notes](https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317320&version=12339197)
 

@@ -862,6 +862,15 @@ public class MySqlConnectorConfig extends CommonConnectorConfig {
                                                            + "'never' to specify the connector should never run a snapshot and that upon first startup the connector should read from the beginning of the binlog. "
                                                            + "The 'never' mode should be used with care, and only when the binlog is known to contain all history.");
 
+    public static final Field CDC_ENABLED = Field.create("cdc.enabled")
+            .withDisplayName("CDC enabled")
+            .withType(Type.BOOLEAN)
+            .withWidth(Width.SHORT)
+            .withImportance(Importance.LOW)
+            .withDefault(true)
+            .withDescription("Set this value to false if you only want to execute the snapshot phase.");
+
+
     /**
      * @deprecated Replaced with SNAPSHOT_LOCKING_MODE
      */

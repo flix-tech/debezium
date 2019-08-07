@@ -194,12 +194,16 @@ public final class MySqlConnectorTask extends BaseSourceTask {
                 chainedReaderBuilder.addReader(binlogReader);
             }
 
-            readers = chainedReaderBuilder.build();
-            readers.uponCompletion(this::completeReaders);
+            if (taskContext.isCdcEnabled()) {
+                readers = chainedReaderBuilder.build();
+                readers.uponCompletion(this::completeReaders);
 
-            // And finally initialize and start the chain of readers ...
-            this.readers.initialize();
-            this.readers.start();
+                // And finally initialize and start the chain of readers ...
+                this.readers.initialize();
+                this.readers.start();
+            } else {
+                logger.info("CDC is disabled (cdc.enabled is false), don't process the binlogs.");
+            }
         } catch (Throwable e) {
             // If we don't complete startup, then Kafka Connect will not attempt to stop the connector. So if we
             // run into a problem, we have to stop ourselves ...
