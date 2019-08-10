@@ -190,20 +190,20 @@ public final class MySqlConnectorTask extends BaseSourceTask {
                     throw new ConnectException(
                             "The MySQL server does not appear to be using a row-level binlog, which is required for this connector to work properly. Enable this mode and restart the connector.");
                 }
-                // We're going to start by reading the binlog ...
-                chainedReaderBuilder.addReader(binlogReader);
+                if (taskContext.isCdcEnabled()) {
+                    // We're going to start by reading the binlog ...
+                    chainedReaderBuilder.addReader(binlogReader);
+                } else {
+                    logger.info("CDC is disabled (cdc.enabled is false), don't process the binlogs.");
+                }
             }
 
-            if (taskContext.isCdcEnabled()) {
-                readers = chainedReaderBuilder.build();
-                readers.uponCompletion(this::completeReaders);
+            readers = chainedReaderBuilder.build();
+            readers.uponCompletion(this::completeReaders);
 
-                // And finally initialize and start the chain of readers ...
-                this.readers.initialize();
-                this.readers.start();
-            } else {
-                logger.info("CDC is disabled (cdc.enabled is false), don't process the binlogs.");
-            }
+            // And finally initialize and start the chain of readers ...
+            this.readers.initialize();
+            this.readers.start();
         } catch (Throwable e) {
             // If we don't complete startup, then Kafka Connect will not attempt to stop the connector. So if we
             // run into a problem, we have to stop ourselves ...
